@@ -4,7 +4,7 @@ import task from './routes/routeTask.js';
 const app = express();
 
 app.use(express.json());
-app.use(task);
+app.use('/task', task);
 
 
 

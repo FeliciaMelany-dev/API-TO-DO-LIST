@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { TableHints } from "sequelize";
+import TaskController from "../controller/TaskController.js";
 
 const task = Router();
 
-task.get('/task', TaskController);
-task.get('/task/:id', TaskController);
-task.post('/task', TaskController);
-task.put('/tasks/:id', TaskController);
-task.patch('/task/:id', TaskController);
-task.delete('/task/:id', TaskController);
+task.get('/', TaskController.getAll);
+task.get('/:id', TaskController);
+task.post('/', TaskController);
+task.put('/:id', TaskController);
+task.patch('/:id', TaskController);
+task.delete('/:id', TaskController);
 
 
 export default task;
