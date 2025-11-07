@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js ",
-    "convert:sequelize": "npx babel src/database --out-dir src/database --extensions \".js\""
+    "sequelize": "sequelize-cli"
   },
   "keywords": [],
   "author": "",

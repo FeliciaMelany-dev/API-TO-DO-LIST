@@ -1,7 +1,10 @@
+import database from '../models/index.js';
+
 class TaskController{
     static async getAll(req, res, next){
         try{
-            res.status(200).send("Essa rota está funcionando")
+            const listOfTasks = await database.Task.findAll();
+            return res.status(200).json(listOfTasks);
         }catch(err){
 
         }
