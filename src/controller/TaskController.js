@@ -31,7 +31,7 @@ class TaskController {
         const { title, description, status } = req.body
 
         try {
-            const newTask = await this.taskService.taskCreat(title, description, status);
+            const newTask = await this.taskService.taskCreat(id,title, description, status);
 
             res.status(200).json(newTask);
 
@@ -41,8 +41,11 @@ class TaskController {
     }
 
     async updateAll(req, res, next) {
+        const {id} = req.params
         const { title, description, status } = req.body
+
         try {
+            const UpdatedTask = await this.taskService.updateAll(id,{ title, description, status});
 
         } catch (err) {
 
@@ -50,8 +53,11 @@ class TaskController {
     }
 
     async updateOne(req, res, nex) {
+        const {id} = req.params
+        const data = req.body
         try {
-
+            const updateTask = await this.taskService.updateOne(id, data);
+            res.status(200).json(updateTask);
         } catch (err) {
 
         }

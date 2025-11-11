@@ -32,17 +32,32 @@ class TaskService {
         }
     }
 
-    async updateAll(title, description, status){
+    async updateAll(id,title, description, status){
         try{
+            const task = await database.Task.findByPk(id);
+
+            if(!task){
+                return null;
+            }
+
+            await database.Task.update();
 
         }catch(err){
 
         }
     }
 
-    async updateOne(){
+    async updateOne(id, data){
         try{
+            const task = await database.Task.findByPk(id);
 
+            if(!task){
+                throw new Error('Task não encontrada')
+            }
+
+            await database.Task.update({...data, updatedAt: new Date()});
+
+            return task;
         }catch(err){
 
         }
