@@ -4,21 +4,21 @@ import path from 'path';
 import { Sequelize, DataTypes } from 'sequelize';
 import process from'process';
 import { fileURLToPath } from "url";
-import configJson from "../config/config.json" with {type: 'json'}
+import config from "../config/config.js" 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const basename = path.basename(import.meta.url);
 const env = process.env.NODE_ENV || 'development';
-const config = configJson[env];
+const configJs = config[env];
 const db = {};
 
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (configJs.use_env_variable) {
+  sequelize = new Sequelize(process.env[configJs.use_env_variable], configJs);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(configJs.database, configJs.username, configJs.password, configJs);
 }
 //Lê todos os arquivos da pasta models
 const files = fs.readdirSync(__dirname).filter(file =>{
