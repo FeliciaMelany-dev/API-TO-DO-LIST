@@ -2,7 +2,7 @@
 //validação para PUT
 
 class validate{
-    static validateTaskPut(req, res, next){
+    static validateTaskPutPost(req, res, next){
         const {title, description, status} = req.body;
     
     if(!title || !description || !status){
@@ -13,10 +13,10 @@ class validate{
     next();
     }
 
-    static validateTaskPatchStatus(req, res, next){
+    static validateTaskStatus(req, res, next){
         const {status} = req.body;
 
-    if(!status){
+        if(!status){
         return res.status(400).json({
             message: "É necessário mandar o status da tarefa"
         });
@@ -31,6 +31,23 @@ class validate{
     }
 
     next();
+    }
+
+    static validateGetId(req,res, next){
+        const {id} = req.query
+
+        if(!id){
+            res.status(400).json({error: "Você precisa passar o ID"})
+        }
+
+        const numericId = Number(id);
+        if(isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)){
+        
+        return res.status(400).json({error: "Formato de ID inválido. Deve ser um número inteiro positivo "})
+        }
+        req.query.id = numericId;
+        
+        next()
     }
 
 

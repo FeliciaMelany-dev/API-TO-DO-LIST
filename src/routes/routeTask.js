@@ -5,15 +5,17 @@ import validate from "../middlwares/validateTask.js";
 const task = Router();
 const controller = new TaskController();
 
-task.get('/', (req, res) => controller.getAll(req, res));
-task.get('/:id', (req, res) => controller.getOne(req, res));
-task.post('/', (req, res) => controller.taskCreat(req, res));
+task.get('/all', (req, res) => controller.getAll(req, res));
 
-task.put('/:id', validate.validateTaskPut, (req, res) => controller.updateAll(req, res));
+task.get('/', validate.validateGetId, (req, res, next) => controller.getOne(req, res, next));
 
-task.patch('/:id', validate.validateTaskPatchStatus, (req, res)=> controller.updateOne(req, res));
+task.post('/', validate.validateTaskPutPost, (req, res, next) => controller.taskCreate(req, res, next));
 
-task.delete('/:id', (req, res) => controller.taskDelete(req, res));
+task.put('/:id', validate.validateTaskPutPost, (req, res, next) => controller.updateAll(req, res, next));
+
+task.patch('/:id', validate.validateTaskStatus, (req, res, next)=> controller.updateOne(req, res, next));
+
+task.delete('/:id', (req, res, next) => controller.taskDelete(req, res, next));
 
 
 export default task;
