@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "8df4641c-d6ba-4ee7-a6c1-010a295b3ac0",
+		"name": "API-TODOLIST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49722971",
+		"_collection_link": "https://feliciamelany-8152366.postman.co/workspace/Felicia-Melany's-Workspace~3e7088b3-7948-4d12-882b-c35c121bfee7/collection/49722971-8df4641c-d6ba-4ee7-a6c1-010a295b3ac0?action=share&source=collection_link&creator=49722971"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

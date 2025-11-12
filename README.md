@@ -92,3 +92,52 @@ npm run dev
 
 -- O servidor será iniciado em: 
 👉 http://localhost:3000
+
+
+🧪 Testes com Postman
+
+O Postman é uma ferramenta utilizada para testar e validar rotas de APIs de forma prática.
+Neste projeto, foi criada uma coleção de requisições que permite testar todas as rotas da API To-Do List — desde a criação até a exclusão de tarefas — sem a necessidade de escrever código manualmente.
+
+📦 O que está incluso
+
+No diretório /postman, há um arquivo chamado:
+
+API-TO-DO-LIST.postman_collection.json
+
+
+Esse arquivo contém todas as requisições configuradas da API, incluindo:
+
+POST → Criar tarefas
+
+GET → Listar todas as tarefas
+
+GET /:id → Buscar uma tarefa específica
+
+PUT /:id → Atualizar uma tarefa
+
+DELETE /:id → Excluir uma tarefa
+
+🚀 Como usar no Postman
+
+Baixe ou clone o repositório:
+
+git clone https://github.com/seu-usuario/API-TO-DO-LIST.git
+
+
+Abra o Postman e clique em:
+
+Import → Upload Files
+
+
+Selecione o arquivo:
+
+/postman/API-TO-DO-LIST.postman_collection.json
+
+
+Inicie o servidor localmente:
+
+npm run dev
+
+
+Agora, execute as requisições diretamente no Postman e visualize as respostas da sua API.
