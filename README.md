@@ -53,9 +53,11 @@ O projeto tem como objetivo demonstrar a construção de uma aplicação backend
 
 | Método | Rota | Descrição |
 |--------|------|------------|
-| **POST** | `/tasks` | Cria uma nova tarefa |
-| **GET** | `/tasks` | Lista todas as tarefas |
-| **PUT** | `/tasks/:id` | Atualiza uma tarefa existente |
+| **POST** | `/task` | Cria uma nova tarefa |
+| **GET** | `/task` | Lista todas as tarefas |
+| **GET** | `/task/:id` | Lista tarefa por ID |
+| **PUT** | `/task/:id` | Atualiza uma tarefa existente |
+| **PATCH** | `/task/:id` | Atualiza status da tarefa existente |
 | **DELETE** | `/tasks/:id | Exclui uma tarefa pelo ID|
 
 
@@ -64,7 +66,7 @@ O projeto tem como objetivo demonstrar a construção de uma aplicação backend
 Crie um arquivo `.env` na raiz do projeto e defina as variáveis necessárias:
 
 PORT = EXEMPLO DE PORTA(3000);
-DB_FILE = CAMINHO DE ONDE ESTA O SEU BANCO DE DADOS
+DB_FILE = CAMINHO DE ONDE ESTA O SEU BANCO DE DADOS;
 
 
 ---
