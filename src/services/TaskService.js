@@ -64,7 +64,7 @@ class TaskService {
             if(!title || !description || !status ) throw new ValidationError ('Todos os campos são obrigatórios')
 
             const validStatus = ['pendente', 'a_fazer', 'concluido' ]
-            if(!validStatus.includes(status)) throw new ValidationError('Status inválido');
+            if(!validStatus.includes(status)) throw new ValidationError(`Status inválido. Você precisa colocar ${validStatus}`);
 
             const task = await database.Task.findByPk(id);
 
@@ -94,7 +94,7 @@ class TaskService {
 
             if(!task) throw new NotFoundError(`Tarefa com id ${id} não encontrada`)
 
-            await database.Task.update({ ...data, updatedAt: new Date() });
+            await database.Task.update({ ...data, updatedAt: new Date() }, {where: {id}});
             return await this.getOne(id)
 
         } catch (err) {

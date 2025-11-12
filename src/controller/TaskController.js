@@ -17,7 +17,7 @@ class TaskController {
     }
 
     async getOne(req, res, next) {
-        const { id } = req.query
+        const { id } = req.params
         //console.log(id)
         try {
             const task = await this.taskService.getOne(id);
@@ -48,7 +48,7 @@ class TaskController {
 
         try {
             const UpdatedTask = await this.taskService.updateAll(id, title, description, status );
-
+            
             res.status(200).json(UpdatedTask);
 
         } catch (err) {
