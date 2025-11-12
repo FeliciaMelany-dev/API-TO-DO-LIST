@@ -1,52 +1,76 @@
 
 //validação para PUT
 
-class validate{
-    static validateTaskPutPost(req, res, next){
-        const {title, description, status} = req.body;
-    
-    if(!title || !description || !status){
-        return res.status(400).json({
-            message: "Campos obrigatórios: title, description e status"
-        });
-    }
-    next();
-    }
+class validate {
+    static validateTaskPutPost(req, res, next) {
+        const { id } = req.params
 
-    static validateTaskStatus(req, res, next){
-        const {status} = req.body;
+        if (!id) {
+            res.status(400).json({ error: "ID obrigatorio" })
+        }
+        const numericId = Number(id);
+        if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
 
-        if(!status){
-        return res.status(400).json({
-            message: "É necessário mandar o status da tarefa"
-        });
-    }
+            return res.status(400).json({ error: "Formato de ID inválido. Deve ser um número inteiro positivo " })
+        }
 
-    const validStatus = ["pendente", "a_fazer", "concluida"];
+        const { title, description, status } = req.body;
 
-    if(!validStatus.includes(status)){
-        return res.status(400).json({
-            message: `Status inválido. Use: ${validStatus.join(",")}`
-        })
+        if (!title || !description || !status) {
+            return res.status(400).json({
+                message: "Campos obrigatórios: title, description e status"
+            });
+            
+        }
+
+
+        next();
     }
 
-    next();
+    static validateTaskStatus(req, res, next) {
+        const { id } = req.params
+
+        if (!id) {
+            res.status(400).json({ error: "ID obrigatorio" })
+        }
+        const numericId = Number(id);
+        if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
+
+            return res.status(400).json({ error: "Formato de ID inválido. Deve ser um número inteiro positivo " })
+        }
+        const { status } = req.body;
+
+        if (!status) {
+            return res.status(400).json({
+                message: "É necessário mandar o status da tarefa"
+            });
+        }
+
+        const validStatus = ["pendente", "a_fazer", "concluida"];
+
+        if (!validStatus.includes(status)) {
+            return res.status(400).json({
+                message: `Status inválido. Use: ${validStatus.join(",")}`
+            })
+        }
+
+        next();
     }
 
-    static validateGetId(req,res, next){
-        const {id} = req.query
+    static validateGetId(req, res, next) {
+        const { id } = req.query
 
-        if(!id){
-            res.status(400).json({error: "Você precisa passar o ID"})
+        if (!id) {
+            res.status(400).json({ error: "Você precisa passar o ID" })
         }
 
         const numericId = Number(id);
-        if(isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)){
-        
-        return res.status(400).json({error: "Formato de ID inválido. Deve ser um número inteiro positivo "})
+        if (isNaN(numericId) || numericId <= 0 || !Number.isInteger(numericId)) {
+
+            return res.status(400).json({ error: "Formato de ID inválido. Deve ser um número inteiro positivo " })
         }
         req.query.id = numericId;
-        
+
         next()
     }
 

@@ -51,7 +51,7 @@ class TaskService {
             return newTask;
 
         } catch (err) {
-            console.error('Erro ao criar tarefa:', err);
+
             if (err instanceof ValidationError) throw err;
             throw new BadRequestError('Erro ao acessar o banco de dados.');
         }
@@ -67,6 +67,7 @@ class TaskService {
             if(!validStatus.includes(status)) throw new ValidationError('Status inválido');
 
             const task = await database.Task.findByPk(id);
+
             if(!task) throw new NotFoundError(`Tarefa com id ${id} não encontrada`);
 
 
@@ -80,7 +81,8 @@ class TaskService {
             return await this.getOne(id)
 
         } catch (err) {
-            if(err instanceof ValidationError || err instanceof NotFoundError){ throw new Error};
+            if(err instanceof ValidationError || err instanceof NotFoundError){ throw err};
+            
 
             throw new BadRequestError('Erro ao atualizar tarefa')
         }
@@ -88,8 +90,8 @@ class TaskService {
 
     async updateOne(id, data) {
         try {
-            
             const task = await database.Task.findByPk(id);
+
             if(!task) throw new NotFoundError(`Tarefa com id ${id} não encontrada`)
 
             await database.Task.update({ ...data, updatedAt: new Date() });
