@@ -1,4 +1,4 @@
-import database from '../models/index.js'
+import database from '../database/models/index.js'
 import { BadRequestError, NotFoundError, ValidationError } from "../middlwares/error.js";
 
 class TaskService {
